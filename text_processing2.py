@@ -28,9 +28,12 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
-    return digit_string
-
+    words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    digit_string = ''
+    for char in input_string:
+        if char.isdigit():
+            digit_string += words[int(char)] + ' '
+    return digit_string.rstrip(' ')
 
 """
 컴퓨터 프로그래밍에 많은 명명 규칙이 있지만, 두 규칙이 특히 흔히 쓰입니다. 
@@ -64,5 +67,17 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    if '_' in underscore_str:
+        underscore_str = list(underscore_str.lower())
+        for idx in range(len(underscore_str)):
+            if underscore_str[idx] == '_':
+                if (idx+1 < len(underscore_str)):
+                    underscore_str[idx+1] = underscore_str[idx+1].upper()
+        while('_' in underscore_str):
+            underscore_str.remove('_')
+        if (underscore_str):
+            underscore_str[0] = underscore_str[0].lower()
+        camelcase_str = ''.join(underscore_str)
+    else:
+        camelcase_str = underscore_str
     return camelcase_str
