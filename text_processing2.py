@@ -68,7 +68,7 @@ def to_camel_case(underscore_str):
             "alreadyCamel"
     """
     if '_' in underscore_str:
-        underscore_str = list(underscore_str)
+        underscore_str = list(underscore_str.lower())
         for idx in range(len(underscore_str)):
             if underscore_str[idx] == '_':
                 if (idx+1 < len(underscore_str)):
@@ -80,7 +80,3 @@ def to_camel_case(underscore_str):
     else:
         camelcase_str = underscore_str
     return camelcase_str
-
-print(to_camel_case('alreadyCamel'))
-print(to_camel_case('__EXAMPLE__NAME__'))
-print(to_camel_case('to_camel_case'))
